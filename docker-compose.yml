@@ -1,0 +1,21 @@
+version: "3"
+services:
+    webpage:
+        image: 'zzswang/docker-nginx-react'
+        restart: always
+        container_name: react-app
+        hostname: 'www.philgore.net'
+        environment:
+            VIRTUAL_HOST: 'voyager.philgore.net, philgore.net'
+            LETSENCRYPT_EMAIL: 'erog38@gmail.com'
+            LETSENCRYPT_HOST: 'voyager.philgore.net, philgore.net'
+            expose:
+                - 80
+                - 443
+            volumes:
+                - './dist:/app'
+            networks:
+                default:
+                    external:
+                        name: nginx-net
+

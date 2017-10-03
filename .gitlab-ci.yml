@@ -1,25 +1,33 @@
-# This file is a template, and might need editing before it works on your project.
-# Official framework image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/node/tags/
-image: node:latest
-
-# This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
-cache:
-  paths:
-  - node_modules/
+stages:
+    - test
+    - build
+    - destroy
 
 test:
-  stage: test
-  script:
-    - npm install
-    - npm test
+    stage: test
+    script:
+        - docker info
+        - yarn install
+        - yarn build
+    tags:
+        - docker
 
-pack:
-  stage: deploy
-  script:
-    - npm install
-    - npm pack
-  artifacts:
-    paths:
-    - ./*.tgz
+    build:
+        when: manual
+        stage: build
+        script:
+            - yarn install
+            - yarn build
+            - docker-compose up -d 
+        tags:
+            - docker
+
+        destroy:
+            when: manual
+            stage: destroy
+            script:
+                - docker stop react-app
+                - docker rm react-app
+            tags: 
+                - docker
+
