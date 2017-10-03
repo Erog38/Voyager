@@ -26,8 +26,8 @@ destroy:
     when: manual
     stage: destroy
     script:
-        - docker stop react-app
-        - docker rm react-app
+        - docker stop voyager
+        - docker rm voyager
     tags: 
         - docker
 
