@@ -1,19 +1,18 @@
 version: "3"
 services:
-    webpage:
-        image: 'zzswang/docker-nginx-react'
+    voyager:
+        build: .
         restart: always
         container_name: voyager
         hostname: 'voyager.philgore.net'
         environment:
             VIRTUAL_HOST: 'voyager.philgore.net'
+            VIRTUAL_PORT: 3333
             LETSENCRYPT_EMAIL: 'erog38@gmail.com'
             LETSENCRYPT_HOST: 'voyager.philgore.net'
-        expose:
-            - 80
-            - 443
         volumes:
-            - './build:/app'
+            - .:/home/appuser/workdir
+            - /home/appuser/workdir/node_modules
 networks:
     default:
         external:
