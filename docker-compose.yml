@@ -4,7 +4,7 @@ services:
         image: 'zzswang/docker-nginx-react'
         restart: always
         container_name: voyager
-        hostname: 'www.philgore.net'
+        hostname: 'voyager.philgore.net'
         environment:
             VIRTUAL_HOST: 'voyager.philgore.net'
             LETSENCRYPT_EMAIL: 'erog38@gmail.com'
@@ -13,7 +13,7 @@ services:
             - 80
             - 443
         volumes:
-            - './dist:/app'
+            - './build:/app'
 networks:
     default:
         external:
