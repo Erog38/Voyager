@@ -3,7 +3,7 @@ services:
     webpage:
         image: 'zzswang/docker-nginx-react'
         restart: always
-        container_name: react-app
+        container_name: voyager
         hostname: 'www.philgore.net'
         environment:
             VIRTUAL_HOST: 'www.philgore.net<Plug>PeepOpenhilgore.net'
