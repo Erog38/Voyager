@@ -6,9 +6,9 @@ services:
         container_name: voyager
         hostname: 'www.philgore.net'
         environment:
-            VIRTUAL_HOST: 'www.philgore.net<Plug>PeepOpenhilgore.net'
+            VIRTUAL_HOST: 'voyager.philgore.net'
             LETSENCRYPT_EMAIL: 'erog38@gmail.com'
-            LETSENCRYPT_HOST: 'www.philgore.net<Plug>PeepOpenhilgore.net'
+            LETSENCRYPT_HOST: 'voyager.philgore.net'
         expose:
             - 80
             - 443
