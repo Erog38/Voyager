@@ -16,4 +16,4 @@ services:
 networks:
     default:
         external:
-           name: nginx-net
+            name: nginx-net
