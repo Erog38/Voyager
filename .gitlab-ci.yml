@@ -12,22 +12,22 @@ test:
     tags:
         - docker
 
-    build:
-        when: manual
-        stage: build
-        script:
-            - yarn install
-            - yarn build
-            - docker-compose up -d 
-        tags:
-            - docker
+build:
+    when: manual
+    stage: build
+    script:
+        - yarn install
+        - yarn build
+        - docker-compose up -d 
+    tags:
+        - docker
 
-        destroy:
-            when: manual
-            stage: destroy
-            script:
-                - docker stop react-app
-                - docker rm react-app
-            tags: 
-                - docker
+destroy:
+    when: manual
+    stage: destroy
+    script:
+        - docker stop react-app
+        - docker rm react-app
+    tags: 
+        - docker
 
