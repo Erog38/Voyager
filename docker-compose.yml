@@ -6,16 +6,15 @@ services:
         container_name: react-app
         hostname: 'www.philgore.net'
         environment:
-            VIRTUAL_HOST: 'voyager.philgore.net, philgore.net'
+            VIRTUAL_HOST: 'www.philgore.net<Plug>PeepOpenhilgore.net'
             LETSENCRYPT_EMAIL: 'erog38@gmail.com'
-            LETSENCRYPT_HOST: 'voyager.philgore.net, philgore.net'
-            expose:
-                - 80
-                - 443
-            volumes:
-                - './dist:/app'
-            networks:
-                default:
-                    external:
-                        name: nginx-net
-
+            LETSENCRYPT_HOST: 'www.philgore.net<Plug>PeepOpenhilgore.net'
+        expose:
+            - 80
+            - 443
+        volumes:
+            - './dist:/app'
+networks:
+    default:
+        external:
+            name: nginx-net
