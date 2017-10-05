@@ -6,7 +6,6 @@ import Home from './views/home';
 import Library from './views/library';
 import About from './views/about';
 import { Switch, Route } from 'react-router-dom';
-import { grey } from 'material-ui/colors';
 
 const theme = createMuiTheme({
     palette: {
