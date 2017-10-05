@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 import MenuIcon from 'material-ui-icons/Menu';
 import IconButton from 'material-ui/IconButton';
 import Drawer from 'material-ui/Drawer';
-import Logo from '../Logo/';
+import Logo from '../Logo';
 import Chat from 'material-ui-icons/Chat';
 import Home from 'material-ui-icons/Home';
 import Info from 'material-ui-icons/Info';
@@ -67,19 +67,21 @@ class Menu extends Component {
        render() {
         return (
             <div>
-                <AppBar position="static" >
+                <AppBar  position="static" >
                   <Toolbar>
                       <IconButton onClick={this.toggleDrawer} color="contrast" aria-label="Menu">
                           <MenuIcon />
                       </IconButton>
-                    <Typography type="title" color="inherit">
-                        {this.props.title}
-                    </Typography>
+                    <div>
+                        <Typography type="title" color="inherit">
+                            {this.props.title}
+                        </Typography>
+                    </div>
                   </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onRequestClose={this.toggleDrawer}>
                     <div tabIndex={0} role="button" onClick={this.toggleDrawer} >
-                        <Logo/>
+                        <Logo title={this.props.title}/>
                         {buttons()}
                     </div>
                </Drawer>

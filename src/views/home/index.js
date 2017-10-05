@@ -7,14 +7,11 @@ import header from '../../images/header.png'
 const styles = theme => ({
       root: {
               flexGrow: 1,
-              marginTop:10,
-              marginLeft:10,
-              marginRight:10,
             },
       paper: {
-              padding: 16,
-              textAlign: 'center'
-            },
+            textAlign: 'center',
+            height: '100%'
+        },
       header: {
           position: 'relative'
       },
@@ -37,7 +34,6 @@ const styles = theme => ({
     },
     gridItem_xs_8: {
         minWidth:'300px',
-
     },
     gridItem_xs_4: {
         minWidth:'250px'
@@ -59,12 +55,12 @@ class Home extends Component {
         <Grid className={this.classes.grid} container align='stretch' justify='center'  spacing={24}>
             <Grid item xs={8} className={this.classes.gridItem_xs_8}>
                 <Paper className={this.classes.paper} >
-                    Give it ANOTHA ITEM.
+                Blog
                 </Paper>
             </Grid>
             <Grid item xs={4}>
                 <Paper className={this.classes.paper} >
-                    Now Playing .
+                    Playing
                 </Paper>
             </Grid>
         </Grid>

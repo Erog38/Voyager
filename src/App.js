@@ -6,12 +6,27 @@ import Home from './views/home';
 import Library from './views/library';
 import About from './views/about';
 import { Switch, Route } from 'react-router-dom';
-
+import { grey } from 'material-ui/colors';
 
 const theme = createMuiTheme({
-    status: {
-        primary: "rgba(116, 145, 161, 1)",
-        secondary: "rgba(22, 87, 127, 1)",
+    palette: {
+        primary: {
+         "50": "#e3f2fd",
+         "100": "#bbdefb",
+         "200": "#90caf9",
+         "300": "#64b5f6",
+         "400": "#42a5f5",
+         "500": "#212121",
+         "600": "#1e88e5",
+         "700": "#1976d2",
+         "800": "#1565c0",
+         "900": "#0d47a1",
+         "A100": "#82b1ff",
+         "A200": "#448aff",
+         "A400": "#2979ff",
+         "A700": "#2962ff",
+         "contrastDefaultColor": "light"
+        },
     },
     background: {
         primary: "rgb(238,238,238)"
