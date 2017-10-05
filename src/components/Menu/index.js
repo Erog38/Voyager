@@ -14,6 +14,9 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 
 const menuStyle = theme => ({
+    appBar: {
+        backgroundColor: 'rgba(33,33,33,0.8)',
+    }
 });
 
 
@@ -67,7 +70,7 @@ class Menu extends Component {
        render() {
         return (
             <div>
-                <AppBar  position="static" >
+                <AppBar className={this.props.classes.appBar}  position="fixed" >
                   <Toolbar>
                       <IconButton onClick={this.toggleDrawer} color="contrast" aria-label="Menu">
                           <MenuIcon />
@@ -77,7 +80,7 @@ class Menu extends Component {
                             {this.props.title}
                         </Typography>
                     </div>
-                  </Toolbar>
+                    </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onRequestClose={this.toggleDrawer}>
                     <div tabIndex={0} role="button" onClick={this.toggleDrawer} >

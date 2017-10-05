@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
-import header from '../../images/header.png'
+import Header from '../../components/Header';
 
 const styles = theme => ({
       root: {
@@ -12,22 +12,12 @@ const styles = theme => ({
             textAlign: 'center',
             height: '100%'
         },
-      header: {
-          position: 'relative'
-      },
-      headerImage: {
-              width: '100%'
-      },
-      headerText: {
-        position: 'absolute',
-        bottom: 0,
-        left: 10,
-        color: 'white',
-      },
     grid: {
         flexGrow: 1,
         marginTop:'20px',
-        height:512
+        height:512,
+        width: '100%',
+        margin: 0,
     },
     gridItem_xs_12: {
         minWidth:'300px'
@@ -46,16 +36,11 @@ class Home extends Component {
     render() {
     return(
     <div className={this.classes.root}>
-        <div className={this.classes.header}>
-            <img className={this.classes.headerImage} src={header} alt="header"/>
-            <h4 className={this.classes.headerText}>
-                <span>Now Playing: </span>
-            </h4>
-        </div>
-        <Grid className={this.classes.grid} container align='stretch' justify='center'  spacing={24}>
+        <Header/>
+        <Grid className={this.classes.grid} container spacing={24}>
             <Grid item xs={8} className={this.classes.gridItem_xs_8}>
                 <Paper className={this.classes.paper} >
-                Blog
+                News and Updates
                 </Paper>
             </Grid>
             <Grid item xs={4}>
@@ -70,4 +55,3 @@ class Home extends Component {
 }
 
 export default withStyles(styles)(Home);
-
