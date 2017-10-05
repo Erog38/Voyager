@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
-import Header from '../../components/Header';
-
+import DocumentTitle from 'react-document-title';
 const styles = theme => ({
       root: {
               flexGrow: 1,
@@ -36,7 +35,7 @@ class Home extends Component {
     render() {
     return(
     <div className={this.classes.root}>
-        <Header/>
+        <DocumentTitle title="Voyager Home"/>
         <Grid className={this.classes.grid} container spacing={24}>
             <Grid item xs={8} className={this.classes.gridItem_xs_8}>
                 <Paper className={this.classes.paper} >

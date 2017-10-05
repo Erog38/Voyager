@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../../components/Header';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
+import DocumentTitle from 'react-document-title';
 
 const styles = theme => ({
       root: {
@@ -31,7 +31,7 @@ class Library extends Component {
     render() {
     return(
         <div className={this.classes.root}>
-        <Header/>
+        <DocumentTitle title="Voyager Library"/>
         <Grid className={this.classes.grid} container spacing={24}>
             <Grid item xs={4} className={this.classes.gridItem_xs_4}>
                 <Paper className={this.classes.paper} >

@@ -5,6 +5,8 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Home from './views/home';
 import Library from './views/library';
 import About from './views/about';
+import Blog from './views/blog';
+import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
 
 const theme = createMuiTheme({
@@ -38,10 +40,12 @@ class App extends Component {
         <MuiThemeProvider theme={theme}>
             <div className="App">
                 <Menu title="Voyager Radio" />
+                <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
                     <Route path='/about' component={About}/>
                     <Route path='/library' component={Library}/>
+                    <Route path='/blog' component={Blog}/>
                 </Switch>
             </div>
         </MuiThemeProvider>

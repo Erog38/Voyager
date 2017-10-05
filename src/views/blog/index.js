@@ -5,8 +5,8 @@ class About extends Component {
     render() {
     return(
     <div>
-        <DocumentTitle title="About Voyager"/>
-        <h1>About This page.</h1>
+        <DocumentTitle title="Voyager Blog"/>
+        <h1>Welcome to the Blog</h1>
    </div>
     );
     }
