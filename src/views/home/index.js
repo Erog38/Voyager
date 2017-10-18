@@ -6,17 +6,16 @@ import DocumentTitle from 'react-document-title';
 const styles = theme => ({
       root: {
               flexGrow: 1,
+              marginTop:30,
+              padding:10,
+              margin: 'auto',
+              maxWidth: 800
             },
       paper: {
             textAlign: 'center',
-            height: '100%'
+            padding: 16,
         },
     grid: {
-        flexGrow: 1,
-        marginTop:'20px',
-        height:512,
-        width: '100%',
-        margin: 0,
     },
     gridItem_xs_12: {
         minWidth:'300px'
@@ -36,13 +35,13 @@ class Home extends Component {
     return(
     <div className={this.classes.root}>
         <DocumentTitle title="Voyager Home"/>
-        <Grid className={this.classes.grid} container spacing={24}>
-            <Grid item xs={8} className={this.classes.gridItem_xs_8}>
+        <Grid container spacing={24}>
+            <Grid item xs={12} sm={8}  >
                 <Paper className={this.classes.paper} >
                 News and Updates
                 </Paper>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
                 <Paper className={this.classes.paper} >
                     Playing
                 </Paper>
