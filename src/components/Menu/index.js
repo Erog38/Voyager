@@ -16,6 +16,10 @@ import { withStyles } from 'material-ui/styles';
 const menuStyle = theme => ({
     appBar: {
         backgroundColor: 'rgba(33,33,33,0.8)',
+    },
+    audioControls: {
+        position:'fixed',
+        right:0
     }
 });
 
@@ -80,6 +84,10 @@ class Menu extends Component {
                             {this.props.title}
                         </Typography>
                     </div>
+                <audio controls className={this.props.classes.audioControls}>
+                  <source src="http://streaming.shoutcast.com/VoyagerElectronicRadio" type="audio/mpeg"/>
+                  Your browser does not support the audio element.
+                </audio>
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onRequestClose={this.toggleDrawer}>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Menu from './components/Menu';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
 import Home from './views/home';
 import Library from './views/library';
 import About from './views/about';
@@ -34,12 +35,25 @@ const theme = createMuiTheme({
     }
 });
 
+const styles = theme => ({
+    paper: {
+        backgroundColor:'rgb(235,235,235)',
+        maxWidth: 1000,
+        padding: 10,
+        margin: 'auto',
+        marginTop: 64
+    }
+});
+
 class App extends Component {
-  render() {
+ classes=this.props.classes;
+   render() {
+       document.body.style.backgroundColor = 'rgb(33,33,33)'
     return (
         <MuiThemeProvider theme={theme}>
-            <div className="App">
+            <div class='App'>
                 <Menu title="Voyager Radio" />
+                <Paper className={this.classes.paper}>
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
@@ -47,10 +61,11 @@ class App extends Component {
                     <Route path='/library' component={Library}/>
                     <Route path='/blog' component={Blog}/>
                 </Switch>
+                </Paper>
             </div>
         </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

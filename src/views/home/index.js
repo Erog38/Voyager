@@ -14,6 +14,7 @@ const styles = theme => ({
       paper: {
             textAlign: 'center',
             padding: 16,
+            minHeight: 400,
         },
     grid: {
     },

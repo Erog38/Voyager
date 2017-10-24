@@ -5,15 +5,17 @@ import { withStyles } from 'material-ui/styles';
 const styles = theme => ({
       header: {
           position: 'relative',
-          paddingTop: 64,
-          backgroundColor: '#212121'
+          overflow: 'hidden'
       },
       headerImage: {
-              width: '100%'
+              width: '100%',
+              minWidth: '800px',
+              right:0,
+              position:'sticky'
       },
       headerText: {
         position: 'absolute',
-        bottom: 0,
+        top: 0,
         left: 10,
         color: 'white',
       },
