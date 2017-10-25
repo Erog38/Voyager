@@ -85,7 +85,7 @@ class Menu extends Component {
                         </Typography>
                     </div>
                 <audio controls className={this.props.classes.audioControls}>
-                  <source src="http://streaming.shoutcast.com/VoyagerElectronicRadio" type="audio/mpeg"/>
+                  <source src="https://streaming.shoutcast.com/VoyagerElectronicRadio" type="audio/mpeg"/>
                   Your browser does not support the audio element.
                 </audio>
                     </Toolbar>
