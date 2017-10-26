@@ -3,28 +3,31 @@ import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import DocumentTitle from 'react-document-title';
+import Divider from 'material-ui/Divider';
+import Player from '../../components/Player'
+
 const styles = theme => ({
       root: {
               flexGrow: 1,
               marginTop:30,
               padding:10,
               margin: 'auto',
-              maxWidth: 800
             },
       paper: {
             textAlign: 'center',
             padding: 16,
-            minHeight: 400,
         },
     grid: {
     },
-    gridItem_xs_12: {
+    gridItem_sm_12: {
         minWidth:'300px'
     },
-    gridItem_xs_8: {
+    gridItem_sm_8: {
+        minHeight: 400,
         minWidth:'300px',
     },
-    gridItem_xs_4: {
+    gridItem_sm_4: {
+        minHeight: 200,
         minWidth:'250px'
     }
 });
@@ -37,14 +40,19 @@ class Home extends Component {
     <div className={this.classes.root}>
         <DocumentTitle title="Voyager Home"/>
         <Grid container spacing={24}>
-            <Grid item xs={12} sm={8}  >
+            <Grid item className={this.classes.gridItem_xs_8} xs={12} sm={8}  >
                 <Paper className={this.classes.paper} >
                 News and Updates
                 </Paper>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item  className={this.classes.gridItem_xs_4} xs={12} sm={4}>
                 <Paper className={this.classes.paper} >
                     Playing
+                    <Player/>
+                </Paper>
+                <Divider/>
+                <Paper className={this.classes.paper} >
+                    History: 
                 </Paper>
             </Grid>
         </Grid>
