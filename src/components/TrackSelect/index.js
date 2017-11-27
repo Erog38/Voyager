@@ -61,8 +61,7 @@ class TrackSelect extends Component {
              <DialogTitle>{"Request Song?"}</DialogTitle>
              <DialogContent>
                <DialogContentText>
-                Would you like to request that {track.title} by {track.artist} 
-                gets added to the playlist?
+                Would you like to request that {track.title} by {track.artist} gets added to the playlist?
                </DialogContentText>
              </DialogContent>
              <DialogActions>
