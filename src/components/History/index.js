@@ -45,7 +45,7 @@ class History extends Component {
     render() {
         let histItems = this.props.history.map((track) => {
             return (
-                <a href={track.url} className={this.props.classes.listItem} key={track.track_id}>
+                <a href={track.url} className={this.props.classes.listItem} key={track.track_id + Math.random()}>
                 <ListItem button>
                   <ListItemAvatar>
                     <Avatar src={track.album_art}/>

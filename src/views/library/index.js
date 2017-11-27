@@ -3,9 +3,14 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import Button from 'material-ui/Button';
+import KeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
+import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
+import MobileStepper from 'material-ui/MobileStepper';
 import DocumentTitle from 'react-document-title';
 import Player from '../../components/Player';
 import History from '../../components/History';
+import AlbumCard from '../../components/AlbumCard';
 import { compose } from 'redux';
 import {connect} from 'react-redux';
 import {fetchLibrary} from '../../actions';
@@ -21,15 +26,13 @@ const styles = theme => ({
             textAlign: 'center',
             padding: 16,
         },
-      artistCard: {
-            textAlign: 'center',
-            height: '100%'
-        },
+      albumCard: {
+        margin: 5,  
+      },
     grid: {
     },
     innerGrid: {
         flexGrow: 1,
-        height:512,
         width: '100%',
         margin: 0,
     },
@@ -46,28 +49,69 @@ class Library extends Component {
         this.state = {page: 0}
     }
 
-    classes = this.props.classes
+    componentDidMount(){
+       this.props.fetchLibrary(this.state.page);
+    }
+
+    handleNext = () => {
+        this.setState({
+           page: this.state.page + 1,
+        });
+       this.props.fetchLibrary(this.state.page+1);
+    }
+   
+
+    handleBack = () => {
+         this.setState({
+           page: this.state.page - 1,
+         });
+       this.props.fetchLibrary(this.state.page-1);                                           
+    }
+
     render() {
-        this.props.fetchLibrary(this.state.page);
+    let { classes } = this.props
+    let libItems = this.props.library.map((album) => {
+        return (  
+            <div className={classes.albumCard} key={album.album_id}>
+                <AlbumCard album={album} />
+            </div>
+        )
+    })
+
+
     return(
-        <div className={this.classes.root}>
+        <div className={classes.root}>
             <DocumentTitle title="Voyager Library"/>
-            <Grid className={this.classes.grid} container spacing={24}>
-                <Grid item className={this.classes.gridItem_xs_8} xs={12} sm={8}  >
-                    <Grid className={this.classes.innerGrid} container spacing={24}>
-                        <Grid item xs={4} className={this.classes.gridItem_xs_4}>
-                            <Paper className={this.classes.paper} >
-                                Artist 1
-                            </Paper>
-                        </Grid>
+            <Grid className={classes.grid} container spacing={24}>
+                <Grid item className={classes.gridItem_xs_8} xs={12} sm={8}  >
+                    <Grid className={classes.innerGrid} container spacing={24} ref={(lib) => this.lib = lib}>
+                        {libItems}
                     </Grid>
-                </Grid>
-                    <Grid item  className={this.classes.gridItem_xs_4} xs={12} sm={4}>
-                        <Paper className={this.classes.paper} >
+                  <MobileStepper
+                type="dots"
+                steps={this.props.total_pages}
+                position="static"
+                activeStep={this.state.page}
+                className={classes.root}
+                nextButton={
+                          <Button dense onClick={this.handleNext} disabled={this.state.page === this.props.total_pages-1}>
+                            Next
+                            <KeyboardArrowRight />
+                          </Button>
+                        }
+                backButton={
+                          <Button dense onClick={this.handleBack} disabled={this.state.page === 0}>
+                            <KeyboardArrowLeft/>
+                            Back
+                          </Button>}
+                />
+            </Grid>
+                    <Grid item  className={classes.gridItem_xs_4} xs={12} sm={4}>
+                        <Paper className={classes.paper} >
                             <Player/>
                         </Paper>
                         <Divider/>
-                        <Paper className={this.classes.paper} >
+                        <Paper className={classes.paper} >
                             <History/>
                        </Paper>
                     </Grid>
@@ -78,7 +122,9 @@ class Library extends Component {
 }
 function mapStateToProps(state) {
     return {
-        library: state.libraryStore.albums
+        library: state.libraryStore.library,
+        current_page: state.libraryStore.page,
+        total_pages: state.libraryStore.total_pages
     }
 }
 
