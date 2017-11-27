@@ -27,6 +27,8 @@ function historyReducer(state=initialHistoryState, action) {
 }
 
 const initialLibraryState = {
+    total_pages: 0,
+    page:0,
     library: [{
         album_id: '',
         title: '',
@@ -51,6 +53,8 @@ function libraryReducer(state=initialLibraryState, action) {
         case 'LIBRARY_SUCCESS':{
             return {
                 ...state,
+                total_pages: action.payload.total_pages,
+                page: action.payload.page,
                 library: action.payload.albums
             }
         }
