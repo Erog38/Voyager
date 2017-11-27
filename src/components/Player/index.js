@@ -73,7 +73,7 @@ class Player extends Component {
             isPlaying: !prevState.isPlaying
         }));
         if (!this.state.isPlaying){
-            audioComponent.src = 'http://radio.philgore.net:8000/;?type=http&nocache=1'
+            audioComponent.src = 'https://radio.philgore.net/;?type=http&nocache=1'
             audioComponent.load()
             audioComponent.play();
 
@@ -116,8 +116,8 @@ class Player extends Component {
     render() {
         return (
             <div style={{backgroundImage: 'url("' + this.props.currentTrack.album_art + '")'}} className={this.props.classes.root}>
-                <audio preload="none" ref={(audio) => this.audioComponent = audio}>
-                  <source src="http://radio.philgore.net:8000/;?type=http&nocache=1" type="audio/mpeg"/>
+                <audio ref={(audio) => this.audioComponent = audio}>
+                  <source src="https://radio.philgore.net/;?type=http&nocache=1" type="audio/mpeg"/>
                   Your browser does not support the audio element.
                 </audio>
         

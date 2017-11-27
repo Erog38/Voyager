@@ -71,6 +71,9 @@ class Library extends Component {
     render() {
     let { classes } = this.props
     let libItems = this.props.library.map((album) => {
+        if (album.album_id === ""){
+            return (<div key="nil"/>) 
+        }
         return (  
             <div className={classes.albumCard} key={album.album_id}>
                 <AlbumCard album={album} />

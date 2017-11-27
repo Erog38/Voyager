@@ -37,7 +37,7 @@ export function fetchCurrentTrack() {
 
 
 function fetchCurrent() {
-  const URL = "https://radio.philgore.net/current";
+  const URL = "https://enterprise.philgore.net/current";
   return fetch(URL, { method: 'GET' })
      .then( response => Promise.all([response, response.json()]) );
 }
@@ -81,7 +81,7 @@ export function fetchHistory() {
 
 
 function fetchHistoric() {
-  const URL = "https://radio.philgore.net/history";
+  const URL = "https://enterprise.philgore.net/history";
   return fetch(URL, { method: 'GET' })
      .then( response => Promise.all([response, response.json()]) );
 } 
@@ -127,7 +127,7 @@ export function fetchLibrary(page) {
 
 
 function fetchList(page) {
-  const URL = "https://radio.philgore.net/list?page="+page;
+  const URL = "https://enterprise.philgore.net/list?page="+page;
   return fetch(URL, { method: 'GET' })
      .then( response => Promise.all([response, response.json()]) );
 }
