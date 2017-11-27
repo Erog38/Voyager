@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import DocumentTitle from 'react-document-title';
 import Divider from 'material-ui/Divider';
 import Player from '../../components/Player'
+import History from '../../components/History'
 
 const styles = theme => ({
       root: {
@@ -47,12 +48,11 @@ class Home extends Component {
             </Grid>
             <Grid item  className={this.classes.gridItem_xs_4} xs={12} sm={4}>
                 <Paper className={this.classes.paper} >
-                    Playing
                     <Player/>
                 </Paper>
                 <Divider/>
                 <Paper className={this.classes.paper} >
-                    History: 
+                    <History/>
                 </Paper>
             </Grid>
         </Grid>

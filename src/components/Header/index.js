@@ -28,7 +28,6 @@ class Header extends Component {
         <div className={this.classes.header}>
             <img className={this.classes.headerImage} src={header} alt="header"/>
             <h4 className={this.classes.headerText}>
-                <span>Now Playing: </span>
             </h4>
         </div>
         );
