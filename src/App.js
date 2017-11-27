@@ -50,8 +50,9 @@ class App extends Component {
    render() {
        document.body.style.backgroundColor = 'rgb(33,33,33)'
     return (
+
         <MuiThemeProvider theme={theme}>
-            <div class='App'>
+            <div >
                 <Menu title="Voyager Radio" />
                 <Paper className={this.classes.paper}>
                 <Header/>

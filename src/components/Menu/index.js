@@ -84,10 +84,6 @@ class Menu extends Component {
                             {this.props.title}
                         </Typography>
                     </div>
-                <audio controls className={this.props.classes.audioControls}>
-                  <source src="https://streaming.shoutcast.com/VoyagerElectronicRadio" type="audio/mpeg"/>
-                  Your browser does not support the audio element.
-                </audio>
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onRequestClose={this.toggleDrawer}>
