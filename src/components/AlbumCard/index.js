@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { withStyles  } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia  } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import Menu from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
+import TrackSelect from '../../components/TrackSelect';
 
 const styles = {
     link: {
@@ -80,10 +81,8 @@ class AlbumCard extends Component {
                             },
                             }}>
                     {this.props.album.tracks.map(track => (
-                              <MenuItem key={track.track_id} onClick={this.handleRequestClose}>
-                                {track.title}
-                              </MenuItem>
-                            ))}
+                        <TrackSelect key={track.track_id} track={track}/>        
+                    ))}
                 </Menu>
 
         </div>

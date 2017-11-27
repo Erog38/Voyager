@@ -1,93 +1,81 @@
 import React, { Component } from 'react';
-import { withStyles  } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia  } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Menu, { MenuItem } from 'material-ui/Menu';
-import Typography from 'material-ui/Typography';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from 'material-ui/Dialog';
+import { MenuItem } from 'material-ui/Menu';
 
-const styles = {
-    link: {
-        textDecoration: 'none',
-    },
-    card: {
-      width: 200,
-      height: 350,
-      position: 'relative'
-    },
-    media: {
-        height: 200,
-    },
-    cardActions: {
-        bottom:5,
-        position:'absolute'
-    }
-};
-
-class AlbumCard extends Component {
+class TrackSelect extends Component {
     constructor(props){
         super(props)
         this.state={
-            anchor: null
+            open: false
         }
     }
 
-    handleClick = event => {
-        this.setState({anchor: event.currentTarget })
-    }
+     handleClick = () => {
+        this.setState({open: true });
+     }
 
      handleRequestClose = () => {
-         this.setState({ anchor: null });
+         this.setState({open: false});
      };
 
+     addToPlaylist = () => {
+                       
+        var track = {
+            track_id: this.props.track.track_id
+        }
+        const URL = "https://enterprise.philgore.net/add";
+        fetch(URL, { 
+            method: 'POST',
+            headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(track)
+        }).then( function(payload){
+                 if (payload.success) {
+                    console.log("successfully added song to the playlist")
+                 }
+             }).catch(function(error){
+                 console.log(error);
+             });
+        this.handleRequestClose()
+     };
   render(){
-  const { classes } = this.props;
-
+  const {track, fullScreen } = this.props;
     return (
         <div>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image={this.props.album.album_art}
-              title={this.props.album.title}
-            />
-            <CardContent>
-              <Typography type="subheading" >
-                  {this.props.album.title}
-              </Typography>
-              <Typography component="p">
-                  {this.props.album.artist}
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <a key={this.props.album.album_id} href={this.props.album.url} className={classes.link}>
-                  <Button dense color="primary">
-                    Info
-                  </Button>
-              </a>
-              <Button dense color="primary" onClick={this.handleClick}>
-                Tracklist
-              </Button>
-            </CardActions>
-          </Card>                             
-             <Menu
-                  id="long-menu"
-                  anchorEl={this.state.anchor}
-                  open={Boolean(this.state.anchor)}
-                  onRequestClose={this.handleRequestClose}
-                  PaperProps={{
-                            style: {
-                                    minWidth: 300
-                            },
-                            }}>
-                    {this.props.album.tracks.map(track => (
-                              <MenuItem key={track.track_id} onClick={this.handleRequestClose}>
-                                {track.title}
-                              </MenuItem>
-                            ))}
-                </Menu>
-
+           <MenuItem key={track.track_id} onClick={this.handleClick}>
+             {track.title}
+           </MenuItem>
+           <Dialog
+             fullScreen={fullScreen}
+             open={this.state.open}
+             onRequestClose={this.handleRequestClose}
+           >
+             <DialogTitle>{"Request Song?"}</DialogTitle>
+             <DialogContent>
+               <DialogContentText>
+                Would you like to request that {track.title} by {track.artist} 
+                gets added to the playlist?
+               </DialogContentText>
+             </DialogContent>
+             <DialogActions>
+               <Button onClick={this.addToPlaylist} color="primary">
+                 Damn Straight!
+               </Button>
+               <Button onClick={this.handleRequestClose} color="primary" autoFocus>
+                 Nah
+               </Button>
+             </DialogActions>
+           </Dialog>
         </div>
       )};
 }
 
-export default withStyles(styles)(AlbumCard);
+export default TrackSelect;
