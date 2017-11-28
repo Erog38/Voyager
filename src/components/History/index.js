@@ -12,13 +12,18 @@ const styles = theme => ({
     root : {
         border: 'rgba(255,255,255,0)',
         borderRadius: 10,
-        overflowY: 'scroll',
-        overflowX: 'hidden',
+        overflow: 'hidden',
         color: 'white',
         width: '100%',
         height: 400,
         position: 'relative',
         backgroundColor: 'rgb(33,33,33)',
+    },
+    scroller :{
+        height: '95%',
+        width: '100%',
+        overflow: 'auto',
+        paddingRight: 20,
     },
     title: {
         marginTop: 5,
@@ -61,14 +66,16 @@ class History extends Component {
 
         return (
             <div className={this.props.classes.root}>
-                <Typography type="title" className={this.props.classes.title}>
-                            Recently Played:
-                        </Typography>
-                        <div className={this.props.classes.list}>
-                          <List>
+                    <Typography type="title" className={this.props.classes.title}>
+                        Recently Played:
+                    </Typography>
+                <div className={this.props.classes.scroller}>
+                    <div className={this.props.classes.list}>
+                        <List>
                             {histItems}          
-                          </List>
-                        </div>
+                        </List>
+                    </div>
+                </div>
             </div>
         )
     }

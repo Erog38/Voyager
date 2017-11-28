@@ -6,7 +6,6 @@ import Paper from 'material-ui/Paper';
 import Home from './views/home';
 import Library from './views/library';
 import About from './views/about';
-import Blog from './views/blog';
 import Header from './components/Header';
 import { Switch, Route } from 'react-router-dom';
 
@@ -60,7 +59,6 @@ class App extends Component {
                     <Route exact path='/' component={Home}/>
                     <Route path='/about' component={About}/>
                     <Route path='/library' component={Library}/>
-                    <Route path='/blog' component={Blog}/>
                 </Switch>
                 </Paper>
             </div>
