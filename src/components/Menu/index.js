@@ -33,19 +33,19 @@ var buttons = function (){
                     </ListItemIcon>
                     <ListItemText primary="Home"/>
                 </ListItem>
-                <ListItem button component="a" href="library">
+                <ListItem button component="a" href="/library">
                     <ListItemIcon>
                         <LibraryMusic/>
                     </ListItemIcon>
                     <ListItemText primary="Library"/>
                 </ListItem>
-                <ListItem button component="a" href="about">
+                <ListItem button component="a" href="/about">
                     <ListItemIcon>
                         <Info/>
                     </ListItemIcon>
                     <ListItemText primary="About"/>
                 </ListItem>
-                <ListItem button component="a" href="blog">
+                <ListItem button component="a" href="https://blog.philgore.net">
                     <ListItemIcon>
                         <Chat/>
                     </ListItemIcon>
