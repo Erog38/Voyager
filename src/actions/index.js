@@ -131,3 +131,47 @@ function fetchList(page) {
   return fetch(URL, { method: 'GET' })
      .then( response => Promise.all([response, response.json()]) );
 }
+
+const PAGE_HOME = "HOME"
+const PAGE_LIBRARY = "LIBRARY"
+const PAGE_ABOUT = "ABOUT"
+
+
+function setPageHome(){
+    return {
+        type: PAGE_HOME,
+        currentPage: PAGE_HOME
+    }
+}
+
+function setPageLibrary(){
+    return {
+        type: PAGE_LIBRARY,
+        currentPage: PAGE_LIBRARY
+    }
+}
+function setPageAbout(){
+    return {
+        type: PAGE_ABOUT,
+        currentPage: PAGE_ABOUT
+    }
+}
+
+export function setPage(page){
+    return (dispatch) => {
+        switch(page) {
+         case PAGE_HOME: 
+                dispatch(setPageHome())
+                break;
+         case PAGE_LIBRARY: 
+                dispatch(setPageLibrary())
+                break;
+         case PAGE_ABOUT: 
+                dispatch(setPageAbout())
+                break;
+         default: 
+                dispatch(setPageHome())
+                break;
+        }
+    }
+}

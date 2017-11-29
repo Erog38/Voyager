@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { Component } from 'react';
 import Menu from './components/Menu';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import Home from './views/home';
-import Library from './views/library';
-import About from './views/about';
 import Header from './components/Header';
-import { Switch, Route } from 'react-router-dom';
+import Main from './views/main';
 
 const theme = createMuiTheme({
     palette: {
@@ -44,27 +41,24 @@ const styles = theme => ({
     }
 });
 
-class App extends Component {
- classes=this.props.classes;
+class App extends Component {    
+       
    render() {
+       var { classes } = this.props;
        document.body.style.backgroundColor = 'rgb(33,33,33)'
-    return (
 
+
+    return (
         <MuiThemeProvider theme={theme}>
             <div >
                 <Menu title="Voyager Radio" />
-                <Paper className={this.classes.paper}>
-                <Header/>
-                <Switch>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/about' component={About}/>
-                    <Route path='/library' component={Library}/>
-                </Switch>
+                <Paper className={classes.paper}>
+                    <Header/>
+                    <Main/>
                 </Paper>
             </div>
         </MuiThemeProvider>
     );
   }
-}
-
+}                   
 export default withStyles(styles)(App);

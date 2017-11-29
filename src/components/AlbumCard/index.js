@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { withStyles  } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia  } from 'material-ui/Card';
-import Button from 'material-ui/Button';
+import { GridListTile, GridListTileBar  } from 'material-ui/GridList';
+import Grid from 'material-ui/Grid';
+import IconButton from 'material-ui/IconButton';
+import InfoIcon from 'material-ui-icons/Info';
 import Menu from 'material-ui/Menu';
-import Typography from 'material-ui/Typography';
 import TrackSelect from '../../components/TrackSelect';
 
 const styles = {
+    root:{
+        height: '100%'
+    },
+    img: {
+        width: '100%',
+        height: '100%'
+    },
+    tile: {
+        height: '100%',
+        width: '100%'
+    },
     link: {
         textDecoration: 'none',
     },
-    card: {
-      width: 200,
-      height: 350,
-      position: 'relative'
-    },
-    media: {
-        height: 200,
-    },
-    cardActions: {
-        bottom:5,
-        position:'absolute'
-    }
 };
 
 class AlbumCard extends Component {
@@ -44,32 +44,20 @@ class AlbumCard extends Component {
   const { classes } = this.props;
 
     return (
-        <div>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image={this.props.album.album_art}
-              title={this.props.album.title}
-            />
-            <CardContent>
-              <Typography type="subheading" >
-                  {this.props.album.title}
-              </Typography>
-              <Typography component="p">
-                  {this.props.album.artist}
-              </Typography>
-            </CardContent>
-            <CardActions className={classes.cardActions}>
-              <a key={this.props.album.album_id} href={this.props.album.url} className={classes.link}>
-                  <Button dense color="primary">
-                    Info
-                  </Button>
-              </a>
-              <Button dense color="primary" onClick={this.handleClick}>
-                Tracklist
-              </Button>
-            </CardActions>
-          </Card>                             
+        <Grid className={classes.root} item xs>
+        <GridListTile classes={{root:classes.tile}}>
+            <img className={classes.img} 
+                src={this.props.album.album_art} 
+                alt={this.props.album.title} onClick={this.handleClick}/>
+            <GridListTileBar
+                title={this.props.album.title}
+                subtitle={<span>by: {this.props.album.artist}</span>}
+                actionIcon={
+                       <IconButton href={this.props.album.url}>
+                            <InfoIcon color="rgba(255, 255, 255, 0.54)" />
+                       </IconButton>
+                     }
+               />
              <Menu
                   id="long-menu"
                   anchorEl={this.state.anchor}
@@ -84,8 +72,8 @@ class AlbumCard extends Component {
                         <TrackSelect key={track.track_id} track={track}/>        
                     ))}
                 </Menu>
-
-        </div>
+            </GridListTile>
+            </Grid>
       )};
 }
 

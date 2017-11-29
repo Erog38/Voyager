@@ -86,10 +86,26 @@ function currentReducer(state=initialCurrentState, action) {
     }
 }
 
+
+const initialPageState = {
+        currentPage: "" 
+}
+
+function pageReducer(state=initialPageState, action) {
+    if (action.currentPage){
+    return {
+         ...state,
+         currentPage: action.currentPage
+     }
+    }
+    return state
+}
+
 const reducers = {
-    currentStore: currentReducer,
+    currentStore:  currentReducer,
     historicStore: historyReducer,
-    libraryStore: libraryReducer
+    libraryStore:  libraryReducer,
+    pageStore:     pageReducer
 }
 
 const rootReducer = combineReducers(reducers)
