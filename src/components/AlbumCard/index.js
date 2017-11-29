@@ -4,10 +4,7 @@ import { GridListTile, GridListTileBar  } from 'material-ui/GridList';
 import Grid from 'material-ui/Grid';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui-icons/Info';
-import Card, { CardActions, CardContent, CardMedia  } from 'material-ui/Card';
-import Button from 'material-ui/Button';
 import Menu from 'material-ui/Menu';
-import Typography from 'material-ui/Typography';
 import TrackSelect from '../../components/TrackSelect';
 
 const styles = {

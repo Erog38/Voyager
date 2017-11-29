@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper'
 import Grid from 'material-ui/Grid';
-import Divider from 'material-ui/Divider';
 import Button from 'material-ui/Button';
 import KeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
 import MobileStepper from 'material-ui/MobileStepper';
 import DocumentTitle from 'react-document-title';
-import { GridList } from 'material-ui/GridList';
-import Player from '../../components/Player';
-import History from '../../components/History';
 import AlbumCard from '../../components/AlbumCard';
 import { compose } from 'redux';
 import {connect} from 'react-redux';
