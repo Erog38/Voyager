@@ -9,9 +9,6 @@ import History from '../../components/History'
 
 const styles = theme => ({
       root: {
-              flexGrow: 1,
-              marginTop:30,
-              padding:10,
               margin: 'auto',
             },
       paper: {
@@ -40,22 +37,9 @@ class Home extends Component {
     return(
     <div className={this.classes.root}>
         <DocumentTitle title="Voyager Home"/>
-        <Grid container spacing={24}>
-            <Grid item className={this.classes.gridItem_xs_8} xs={12} sm={8}  >
                 <Paper className={this.classes.paper} >
                 News and Updates
                 </Paper>
-            </Grid>
-            <Grid item  className={this.classes.gridItem_xs_4} xs={12} sm={4}>
-                <Paper className={this.classes.paper} >
-                    <Player/>
-                </Paper>
-                <Divider/>
-                <Paper className={this.classes.paper} >
-                    <History/>
-                </Paper>
-            </Grid>
-        </Grid>
     </div>
     );
     }

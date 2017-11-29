@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -12,6 +14,7 @@ import Info from 'material-ui-icons/Info';
 import LibraryMusic from 'material-ui-icons/LibraryMusic';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
+import { setPage } from '../../actions';
 
 const menuStyle = theme => ({
     appBar: {
@@ -24,41 +27,13 @@ const menuStyle = theme => ({
 });
 
 
-var buttons = function (){
-    return(
-        <List style={{width:250}}>
-                <ListItem button component="a" href="/">
-                    <ListItemIcon >
-                        <Home/>
-                    </ListItemIcon>
-                    <ListItemText primary="Home"/>
-                </ListItem>
-                <ListItem button component="a" href="/library">
-                    <ListItemIcon>
-                        <LibraryMusic/>
-                    </ListItemIcon>
-                    <ListItemText primary="Library"/>
-                </ListItem>
-                <ListItem button component="a" href="/about">
-                    <ListItemIcon>
-                        <Info/>
-                    </ListItemIcon>
-                    <ListItemText primary="About"/>
-                </ListItem>
-                <ListItem button component="a" href="https://blog.philgore.net">
-                    <ListItemIcon>
-                        <Chat/>
-                    </ListItemIcon>
-                    <ListItemText primary="Blog"/>
-                </ListItem>
-        </List>
-    )
-}
-
 class Menu extends Component {
     constructor(props){
         super(props);
         this.toggleDrawer = this.toggleDrawer.bind(this);
+        this.setHomePage = this.setHomePage.bind(this);
+        this.setLibraryPage = this.setLibraryPage.bind(this);
+        this.setAboutPage = this.setAboutPage.bind(this);
     };
 
     state = {
@@ -70,6 +45,16 @@ class Menu extends Component {
             open: !this.state.open,
         });
     };
+    
+    setHomePage() {
+        this.props.setPage('HOME');
+    }
+    setLibraryPage() {
+        this.props.setPage('LIBRARY');
+    }
+    setAboutPage() {
+        this.props.setPage('ABOUT');
+    }
 
        render() {
         return (
@@ -89,7 +74,32 @@ class Menu extends Component {
                 <Drawer open={this.state.open} onRequestClose={this.toggleDrawer}>
                     <div tabIndex={0} role="button" onClick={this.toggleDrawer} >
                         <Logo title={this.props.title}/>
-                        {buttons()}
+                <List style={{width:250}}>
+                        <ListItem button onClick={this.setHomePage}>
+                            <ListItemIcon >
+                                <Home/>
+                            </ListItemIcon>
+                            <ListItemText primary="Home"/>
+                        </ListItem>
+                        <ListItem button onClick={this.setLibraryPage}>
+                            <ListItemIcon>
+                                <LibraryMusic/>
+                            </ListItemIcon>
+                            <ListItemText primary="Library"/>
+                        </ListItem>
+                        <ListItem button onClick={this.setAboutPage}>
+                            <ListItemIcon>
+                                <Info/>
+                            </ListItemIcon>
+                            <ListItemText primary="About"/>
+                        </ListItem>
+                        <ListItem button component="a" href="https://blog.philgore.net">
+                            <ListItemIcon>
+                                <Chat/>
+                            </ListItemIcon>
+                            <ListItemText primary="Blog"/>
+                        </ListItem>
+                </List>
                     </div>
                </Drawer>
             </div>
@@ -97,4 +107,10 @@ class Menu extends Component {
     }
 }
 
-export default withStyles(menuStyle)(Menu);
+function mapStateToProps(state) {
+    return {
+        page: state.pageStore.page
+    }
+}
+
+export default compose(withStyles(menuStyle),connect(mapStateToProps, {setPage}))(Menu);

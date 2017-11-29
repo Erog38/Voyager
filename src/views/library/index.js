@@ -8,6 +8,7 @@ import KeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
 import MobileStepper from 'material-ui/MobileStepper';
 import DocumentTitle from 'react-document-title';
+import { GridList } from 'material-ui/GridList';
 import Player from '../../components/Player';
 import History from '../../components/History';
 import AlbumCard from '../../components/AlbumCard';
@@ -17,29 +18,29 @@ import {fetchLibrary} from '../../actions';
 
 const styles = theme => ({
       root: {
-             flexGrow: 1,
-              marginTop:30,
-              padding:10,
-              margin: 'auto',
+            overflow: 'hidden',
+            width: '100%',
+            position: 'relative'
             },
-      paper: {
-            textAlign: 'center',
-            padding: 16,
-        },
+        container: {
+            display: 'flex',
+            height: 565,
+            position: 'relative',
+            flexWrap: 'wrap',
+            overflowY: 'scroll',
+            justifyContent: 'space-around',
+            width: '100%',
+            paddingRight: 20,
+          },
       albumCard: {
-        margin: 5,  
+          minWidth: 200,
+          width: '33%'
       },
-    grid: {
-    },
-    innerGrid: {
-        flexGrow: 1,
+    gridList: {
         width: '100%',
-        margin: 0,
+        overflowY: 'scroll',
+        height: 565,
     },
-    gridItem_xs_4: {
-        minWidth:250,
-        minHeight:200
-    }
 });
 
 
@@ -76,7 +77,7 @@ class Library extends Component {
         }
         return (  
             <div className={classes.albumCard} key={album.album_id}>
-                <AlbumCard album={album} />
+                <AlbumCard album={album} clasName={classes.albumCard}/>
             </div>
         )
     })
@@ -85,12 +86,12 @@ class Library extends Component {
     return(
         <div className={classes.root}>
             <DocumentTitle title="Voyager Library"/>
-            <Grid className={classes.grid} container spacing={24}>
-                <Grid item className={classes.gridItem_xs_8} xs={12} sm={8}  >
-                    <Grid className={classes.innerGrid} container spacing={24} ref={(lib) => this.lib = lib}>
+                <div className={classes.container}>
+                    <Grid container spacing={24}>
                         {libItems}
                     </Grid>
-                  <MobileStepper
+                </div>
+            <MobileStepper
                 type="dots"
                 steps={this.props.total_pages}
                 position="static"
@@ -108,17 +109,6 @@ class Library extends Component {
                             Back
                           </Button>}
                 />
-            </Grid>
-                    <Grid item  className={classes.gridItem_xs_4} xs={12} sm={4}>
-                        <Paper className={classes.paper} >
-                            <Player/>
-                        </Paper>
-                        <Divider/>
-                        <Paper className={classes.paper} >
-                            <History/>
-                       </Paper>
-                    </Grid>
-              </Grid>
         </div>
     );
     }
