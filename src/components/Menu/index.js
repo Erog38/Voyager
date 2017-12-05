@@ -10,7 +10,6 @@ import Drawer from 'material-ui/Drawer';
 import Logo from '../Logo';
 import Chat from 'material-ui-icons/Chat';
 import Home from 'material-ui-icons/Home';
-import Info from 'material-ui-icons/Info';
 import LibraryMusic from 'material-ui-icons/LibraryMusic';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
@@ -86,12 +85,6 @@ class Menu extends Component {
                                 <LibraryMusic/>
                             </ListItemIcon>
                             <ListItemText primary="Library"/>
-                        </ListItem>
-                        <ListItem button onClick={this.setAboutPage}>
-                            <ListItemIcon>
-                                <Info/>
-                            </ListItemIcon>
-                            <ListItemText primary="About"/>
                         </ListItem>
                         <ListItem button component="a" href="https://blog.philgore.net">
                             <ListItemIcon>
